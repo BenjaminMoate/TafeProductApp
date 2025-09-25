@@ -44,6 +44,11 @@ namespace ProductApps
                 decimal totalWithWrap = cProduct.TotalPayment + 25m + 5m;
                 wrapChargeTextBlock.Text = Convert.ToString(totalWithWrap);
                 // ----------------------------------------------------------------
+
+                // --- added: calculate GST (10%) on total payment + delivery + wrap ---
+                decimal totalWithGST = (cProduct.TotalPayment + 25m + 5m) * 1.1m;
+                gstChargeTextBlock.Text = Convert.ToString(totalWithGST);
+                // ---------------------------------------------------------------------
             }
             catch (FormatException)
             {
@@ -59,6 +64,7 @@ namespace ProductApps
             totalPaymentTextBlock.Text = "";
             totalChargeTextBlock.Text = "";    // clear total charge
             wrapChargeTextBlock.Text = "";     // clear wrap charge
+            gstChargeTextBlock.Text = "";      // clear GST charge
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
